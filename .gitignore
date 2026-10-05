@@ -3,9 +3,13 @@
 .env.*
 !.env.example
 *.env
+SortRight/.env
+SortRight/.env.*
+!SortRight/.env.example
 
 # Python bytecode and caches
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
@@ -23,6 +27,8 @@ venv.bak/
 # Backup folders and files
 backup/
 backups/
+**/backup/
+**/backups/
 *.backup
 *.bak
 *~

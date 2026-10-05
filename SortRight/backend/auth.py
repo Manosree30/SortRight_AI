@@ -17,6 +17,19 @@ LOGIN_ATTEMPTS: Dict[str, Dict[str, Any]] = {}
 MAX_FAILED_ATTEMPTS = 5
 LOCKOUT_WINDOW_SECONDS = 300 # 5 minutes
 
+def get_session_secret() -> str:
+    """
+    Retrieves the mandatory SESSION_SECRET from environment.
+    Fails with a clear, descriptive error if missing or empty.
+    """
+    secret = os.getenv("SESSION_SECRET", "").strip()
+    if not secret:
+        raise RuntimeError(
+            "CRITICAL: SESSION_SECRET environment variable is missing or empty. "
+            "Please set SESSION_SECRET in your environment or .env file before running SortRight."
+        )
+    return secret
+
 def get_demo_users() -> Dict[str, Dict[str, Any]]:
     """
     Loads demo user accounts strictly from environment variables.
@@ -46,16 +59,13 @@ def get_demo_users() -> Dict[str, Dict[str, Any]]:
             "password_hash": recy_hash
         }
 
-    load_dotenv(override=True)
     return users
 
 def is_demo_mode() -> bool:
     """
     Checks if DEMO_MODE is explicitly enabled in environment.
-    Reloads .env with override=True to dynamically pick up changes.
-    Defaults to False.
+    Defaults to False in production.
     """
-    load_dotenv(override=True)
     raw_val = os.getenv("DEMO_MODE", "false")
     clean_val = str(raw_val).strip().strip('"').strip("'").lower()
     return clean_val in ("true", "1", "yes", "t", "y")
@@ -65,7 +75,6 @@ def get_demo_credentials_for_client() -> Optional[Dict[str, Any]]:
     Returns demo credentials only when DEMO_MODE is true.
     Returns None if demo mode is disabled.
     """
-    load_dotenv(override=True)
     if not is_demo_mode():
         return None
     return {
@@ -143,6 +152,8 @@ def verify_credentials(email: str, password: str, client_ip: str) -> Dict[str, A
     }
 
 def create_session(user_data: Dict[str, Any]) -> str:
+    # Ensure session secret is configured in environment
+    get_session_secret()
     session_token = secrets.token_urlsafe(32)
     expires_at = time.time() + SESSION_DURATION_SECONDS
     SESSIONS[session_token] = {

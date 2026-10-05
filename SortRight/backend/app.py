@@ -230,6 +230,17 @@ async def health_check():
     }
 
 
+@app.on_event("startup")
+def validate_startup_config():
+    """
+    Validates required environment configuration on startup.
+    Fails fast if SESSION_SECRET is missing.
+    """
+    from .auth import get_session_secret
+    get_session_secret()
+    logger.info("Startup validation passed: SESSION_SECRET is configured.")
+
+
 # =========================================================
 # STAFF PORTAL AUTHENTICATION & PROTECTED DATA ENDPOINTS
 # =========================================================
@@ -257,12 +268,16 @@ async def portal_login(req: LoginRequest, request: Request, response: Response):
     
     session_token = create_session(user_data)
     
+    # Enable Secure cookie flag when served over HTTPS or behind HTTPS reverse proxy (e.g. Render)
+    forwarded_proto = request.headers.get("x-forwarded-proto", "").lower()
+    is_https = request.url.scheme == "https" or forwarded_proto == "https"
+    
     response.set_cookie(
         key="sortright_session",
         value=session_token,
         httponly=True,
         samesite="lax",
-        secure=False, # True in HTTPS production
+        secure=is_https, # True in HTTPS production
         max_age=3600 * 12
     )
 
@@ -284,7 +299,16 @@ async def portal_logout(request: Request, response: Response):
     """
     session_token = request.cookies.get("sortright_session")
     destroy_session(session_token)
-    response.delete_cookie(key="sortright_session")
+    
+    forwarded_proto = request.headers.get("x-forwarded-proto", "").lower()
+    is_https = request.url.scheme == "https" or forwarded_proto == "https"
+    
+    response.delete_cookie(
+        key="sortright_session",
+        httponly=True,
+        samesite="lax",
+        secure=is_https
+    )
     return {"success": True, "message": "Logged out successfully."}
 
 
@@ -376,3 +400,10 @@ async def serve_portal():
 
 if os.path.isdir(FRONTEND_DIR):
     app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.getenv("PORT", "8000"))
+    host = os.getenv("HOST", "0.0.0.0")
+    uvicorn.run("backend.app:app", host=host, port=port, reload=False)
