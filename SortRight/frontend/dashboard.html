@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SortRight - Municipality & Recycler Analytics Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="/" class="brand-container">
+      <div class="brand-icon">♻️</div>
+      <span class="brand-title">SortRight</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">🔍 Classifier</a>
+      <a href="/dashboard.html" class="nav-link active">📊 Dashboard</a>
+      <a href="/about.html" class="nav-link">ℹ️ About</a>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="app-container" style="max-width: 900px;">
+    
+    <!-- Simulation Banner -->
+    <div style="background-color: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; border-radius: var(--radius-sm); padding: 0.75rem 1rem; color: #fef3c7; font-size: 0.88rem; margin-bottom: 1.5rem; text-align: center; font-weight: 600;">
+      ⚠️ Simulated demo data. Not real scan data.
+    </div>
+
+    <!-- Header -->
+    <header class="hero-header" style="text-align: left; margin-bottom: 1.5rem;">
+      <h1 class="hero-title">Municipality & Recycler View</h1>
+      <p class="hero-subtitle">Simulated city-wide segregation metrics and material recovery streams for Coimbatore.</p>
+    </header>
+
+    <!-- KPI Summary Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Simulated Scans</div>
+        <div style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-top: 0.25rem;">124,850</div>
+        <div style="font-size: 0.75rem; color: var(--cat-recyclable); margin-top: 0.25rem;">↑ 18% vs last month</div>
+      </div>
+
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Dry Recyclability Rate</div>
+        <div style="font-size: 1.8rem; font-weight: 800; color: var(--cat-recyclable); margin-top: 0.25rem;">78.4%</div>
+        <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">Target: 80.0%</div>
+      </div>
+
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Contamination Flagged</div>
+        <div style="font-size: 1.8rem; font-weight: 800; color: var(--cat-special); margin-top: 0.25rem;">14.2%</div>
+        <div style="font-size: 0.75rem; color: var(--cat-recyclable); margin-top: 0.25rem;">↓ 3.1% reduction</div>
+      </div>
+
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">E-Waste Safely Routed</div>
+        <div style="font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin-top: 0.25rem;">3,180 kg</div>
+        <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">CCMC Collection Hubs</div>
+      </div>
+    </div>
+
+    <!-- Charts Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+      
+      <!-- Waste Mix Chart -->
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Waste Mix by Category</h3>
+        <div style="height: 240px; position: relative;">
+          <canvas id="wasteMixChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Contamination Hotspots Chart -->
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Contamination Hotspots (Wards)</h3>
+        <div style="height: 240px; position: relative;">
+          <canvas id="hotspotsChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Trend Chart -->
+    <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2rem;">
+      <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Special Handling & E-Waste Recovery Trend (Monthly kg)</h3>
+      <div style="height: 240px; position: relative;">
+        <canvas id="trendChart"></canvas>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>SortRight Dashboard • Simulated Demo Data • For Demonstration Purposes Only</p>
+  </footer>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

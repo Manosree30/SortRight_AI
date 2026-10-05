@@ -1,0 +1,588 @@
+{
+  "city": "Coimbatore (Sample City)",
+  "disclaimer": "Sample rules. Verify with local municipality.",
+  "source": "Prototype sample rules based on general Indian waste-segregation practice. Not official CCMC guidelines.",
+  "last_updated": "2026-10-05",
+  "rules": [
+    {
+      "id": "pet_bottle",
+      "name": "PET Plastic Bottle / Drink Container",
+      "material_keys": ["pet_plastic", "pet_bottle", "beverage_plastic_bottle"],
+      "keywords": [
+        "mineral water bottle", "plastic water bottle", "water bottles", "water bottle",
+        "soda bottles", "soda bottle", "coke bottle", "coke bottles", "drink bottle",
+        "pet bottles", "pet bottle", "plastic bottles", "plastic bottle"
+      ],
+      "category": "recyclable",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Clear PET (#1) is highly in demand and easily recycled into new polyester yarn or bottles.",
+      "steps": {
+        "prepare": "Empty completely, rinse with minimal water, and let dry.",
+        "separate": "Remove cap (caps can be recycled separately). Flatten bottle to save collection bin space.",
+        "route": "Place into Dry/Recyclable bin or sell to dry waste aggregator / kabadiwala."
+      }
+    },
+    {
+      "id": "banana_peel",
+      "name": "Fruit & Vegetable Scraps",
+      "material_keys": ["fruit_peel", "banana_skin", "citrus_peel", "vegetable_peel"],
+      "keywords": [
+        "banana peels", "banana peel", "banana skins", "banana skin", "banana",
+        "apple cores", "apple core", "fruit peels", "fruit peel", "orange peels", "orange peel",
+        "citrus peel", "potato peel", "onion skin", "veg waste", "vegetable scraps", "vegetable scrap",
+        "vegetable peels", "vegetable peel", "fruit scraps", "fruit scrap"
+      ],
+      "category": "organic",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Quickly decomposes into nutrient-rich compost and prevents landfill methane emissions.",
+      "steps": {
+        "prepare": "Ensure free of stickers, plastic tags, or packaging.",
+        "separate": "Keep separate from dry plastic and paper waste.",
+        "route": "Put in Wet bin or add to home composter."
+      }
+    },
+    {
+      "id": "food_waste_cooked",
+      "name": "Cooked Food Waste / Leftovers / Rice / Gravy",
+      "material_keys": ["cooked_food", "food_leftovers", "rice_curry", "leftover_gravy"],
+      "keywords": [
+        "leftover rice", "cooked rice", "rice", "curry", "vegetable curry", "biryani",
+        "sambar", "dal", "roti", "chapati", "cooked food", "food leftovers", "leftover food",
+        "meal scraps", "cooked vegetable", "meat bones", "fish bones", "gravy"
+      ],
+      "category": "organic",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Biodegradable organic mass converted into biogas or compost by municipal wet waste processing plants.",
+      "steps": {
+        "prepare": "Drain excess liquid/gravy.",
+        "separate": "Keep separate from packaging and plastic wraps.",
+        "route": "Deposit in Wet bin on daily morning collection."
+      }
+    },
+    {
+      "id": "tea_bag",
+      "name": "Tea Bag / Tea Leaves",
+      "material_keys": ["tea_leaves", "tea_dust", "tea_filter"],
+      "keywords": [
+        "used tea bags", "used tea bag", "tea bags", "tea bag", "tea leaves",
+        "chai patti", "tea dust"
+      ],
+      "category": "organic",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Tea leaves are rich in nitrogen, ideal for organic composting. (Check for plastic staples/synthetic mesh).",
+      "steps": {
+        "prepare": "Remove metal staple, tag, and string if synthetic.",
+        "separate": "If mesh bag is made of plastic/nylon, slit bag and discard leaves into Wet bin, nylon bag to Reject bin.",
+        "route": "Deposit organic leaves or unbleached paper tea bag in Wet bin."
+      }
+    },
+    {
+      "id": "egg_shells",
+      "name": "Eggshells",
+      "material_keys": ["eggshell_calcium"],
+      "keywords": [
+        "boiled egg shell", "egg shells", "egg shell", "eggshells", "eggshell"
+      ],
+      "category": "organic",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Excellent source of calcium and minerals for garden soil and compost piles.",
+      "steps": {
+        "prepare": "Crush lightly to accelerate composting.",
+        "separate": "Ensure no plastic packaging is mixed.",
+        "route": "Add to Wet bin or home garden compost."
+      }
+    },
+    {
+      "id": "coconut_shell",
+      "name": "Coconut Shell / Husk",
+      "material_keys": ["coconut_coir_shell"],
+      "keywords": [
+        "tender coconut shell", "coconut shells", "coconut shell", "coconut husks",
+        "coconut husk", "thengai thodu", "nariyal chilka", "nariyal"
+      ],
+      "category": "organic",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Dense organic biomass used for coco-peat, craft items, or slow composting / biochar.",
+      "steps": {
+        "prepare": "Remove any synthetic tags or twine.",
+        "separate": "Can be kept with garden waste or organic waste.",
+        "route": "Place in Wet bin or garden composter."
+      }
+    },
+    {
+      "id": "wooden_stick",
+      "name": "Wooden Chopstick / Ice Cream Stick / Toothpick",
+      "material_keys": ["untreated_wood_bamboo"],
+      "keywords": [
+        "ice cream sticks", "ice cream stick", "wooden chopsticks", "wooden chopstick",
+        "bamboo skewers", "bamboo skewer", "bamboo stick", "chopsticks", "chopstick",
+        "toothpicks", "toothpick"
+      ],
+      "category": "organic",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Natural untreated wood is 100% biodegradable and composts into organic humus.",
+      "steps": {
+        "prepare": "Ensure no plastic coating or paint.",
+        "separate": "Place with organic waste.",
+        "route": "Place in Wet bin or garden composter."
+      }
+    },
+    {
+      "id": "battery",
+      "name": "Used Household Battery (AA/AAA/Lithium)",
+      "material_keys": ["battery_cell", "lithium_ion_battery"],
+      "keywords": [
+        "lithium batteries", "lithium battery", "aa batteries", "aa battery",
+        "aaa batteries", "aaa battery", "button cell", "car battery", "inverter battery",
+        "used batteries", "used battery", "batteries", "battery", "cell", "cells"
+      ],
+      "category": "other",
+      "special": true,
+      "recycling_potential": "Medium",
+      "reason": "Contains toxic heavy metals (lead, cadmium, lithium) that cause landfill fires and contaminate groundwater.",
+      "steps": {
+        "prepare": "Tape the terminals (+ and - ends) with clear tape to prevent short circuits.",
+        "separate": "Never mix with general wet or dry household waste.",
+        "route": "Drop off at designated Hazardous/E-waste drop-off center or authorized electronics recycler."
+      }
+    },
+    {
+      "id": "pizza_box",
+      "name": "Cardboard Pizza Box / Takeout Box",
+      "material_keys": ["pizza_box_packaging"],
+      "keywords": [
+        "cardboard food box", "takeaway boxes", "takeaway box", "takeout boxes",
+        "takeout box", "delivery box", "pizza boxes", "pizza box"
+      ],
+      "clarifying_question": "Is the cardboard greasy or food-soiled?",
+      "condition_branches": {
+        "greasy": {
+          "category": "organic",
+          "special": false,
+          "recycling_potential": "Low",
+          "reason": "Oil and food grease soak into paper fibers, preventing pulp separation at recycling mills. However, unlined cardboard is compostable.",
+          "steps": {
+            "prepare": "Tear off any clean, grease-free top lid portion.",
+            "separate": "Place the greasy bottom in the Wet bin / compost; put clean dry top in Dry/Recyclable bin.",
+            "route": "Greasy portions go to Wet bin or municipal composting."
+          }
+        },
+        "clean": {
+          "category": "recyclable",
+          "special": false,
+          "recycling_potential": "High",
+          "reason": "Clean corrugated cardboard is high-grade recyclable material.",
+          "steps": {
+            "prepare": "Flatten the box completely.",
+            "separate": "Remove any leftover plastic sauce cups, wax paper, or staples.",
+            "route": "Place in Dry/Recyclable bin."
+          }
+        }
+      },
+      "category": "other",
+      "special": false,
+      "recycling_potential": "Medium",
+      "reason": "Recyclability depends strictly on whether grease or food oils have contaminated the paper fibers.",
+      "steps": {
+        "prepare": "Inspect for grease and food scraps.",
+        "separate": "Tear clean top for Dry/Recyclable bin, dirty bottom for Wet bin.",
+        "route": "Separate into Wet bin or Dry/Recyclable bin according to food contamination."
+      }
+    },
+    {
+      "id": "aluminum_can",
+      "name": "Aluminum Beverage Can / Tin Can",
+      "material_keys": ["aluminum_beverage_can"],
+      "keywords": [
+        "cold drink can", "beverage cans", "beverage can", "aluminum cans",
+        "aluminum can", "coke cans", "coke can", "soda cans", "soda can",
+        "beer cans", "beer can", "tin cans", "tin can", "can", "cans"
+      ],
+      "category": "recyclable",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Aluminum is infinitely 100% recyclable with 95% less energy than virgin mining.",
+      "steps": {
+        "prepare": "Empty liquid and rinse lightly.",
+        "separate": "Crush can if convenient.",
+        "route": "Place in Dry/Recyclable bin or sell to scrap dealer."
+      }
+    },
+    {
+      "id": "milk_pouch",
+      "name": "Milk Pouch (LDPE Plastic Packet)",
+      "material_keys": ["ldpe_film_pouch"],
+      "keywords": [
+        "buttermilk packet", "aavin packet", "curd packets", "curd packet",
+        "curd pouch", "oil packets", "oil packet", "oil pouch", "milk packets",
+        "milk packet", "milk pouches", "milk pouch", "plastic pouch"
+      ],
+      "category": "recyclable",
+      "special": false,
+      "recycling_potential": "Medium",
+      "reason": "Low-Density Polyethylene (#4) is recyclable if cleaned and dry, but causes odor/contamination if unwashed.",
+      "steps": {
+        "prepare": "Cut the corner without fully detaching the tip (to avoid micro-plastic litter). Rinse thoroughly with water and let dry inside out.",
+        "separate": "Bundle multiple dry pouches inside one pouch.",
+        "route": "Hand over to Dry/Recyclable bin or specialized plastic collection drive."
+      }
+    },
+    {
+      "id": "glass_bottle",
+      "name": "Glass Bottle / Glass Jar",
+      "material_keys": ["glass_container"],
+      "keywords": [
+        "pickle jars", "pickle jar", "sauce bottles", "sauce bottle", "wine bottles",
+        "wine bottle", "beer bottles", "beer bottle", "jam jars", "jam jar",
+        "glass bottles", "glass bottle", "glass jars", "glass jar"
+      ],
+      "category": "recyclable",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Glass can be recycled endlessly without quality loss.",
+      "steps": {
+        "prepare": "Rinse clean and remove metal or plastic lids.",
+        "separate": "Keep intact. If broken, wrap carefully in thick newspaper and label 'Broken Glass' to protect sanitation workers.",
+        "route": "Place in Dry/Recyclable bin or return to deposit scheme / kabadiwala."
+      }
+    },
+    {
+      "id": "cardboard_box",
+      "name": "Cardboard Shipping Box / Carton",
+      "material_keys": ["corrugated_cardboard_box"],
+      "keywords": [
+        "packaging boxes", "packaging box", "corrugated boxes", "corrugated box",
+        "amazon boxes", "amazon box", "shipping boxes", "shipping box",
+        "carton boxes", "carton box", "cardboard boxes", "cardboard box"
+      ],
+      "category": "recyclable",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "High-grade recyclable fiber that is pulped into new corrugated shipping boxes.",
+      "steps": {
+        "prepare": "Remove plastic shipping tape, bubble wrap, and sticky address labels if plastic.",
+        "separate": "Flatten box completely.",
+        "route": "Place in Dry/Recyclable bin or sell to scrap dealer."
+      }
+    },
+    {
+      "id": "newspaper",
+      "name": "Newspaper / Magazine / Office Paper",
+      "material_keys": ["newsprint_paper", "office_white_paper"],
+      "keywords": [
+        "printed paper", "exam paper", "textbook", "office paper", "notebooks",
+        "notebook", "magazines", "magazine", "newspapers", "newspaper", "newsprint"
+      ],
+      "category": "recyclable",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Clean paper fibers can be recycled 5 to 7 times into recycled paper products.",
+      "steps": {
+        "prepare": "Keep completely dry. Do not crumple tightly.",
+        "separate": "Stack and tie with twine.",
+        "route": "Place in Dry/Recyclable bin or sell directly to local paper recycler."
+      }
+    },
+    {
+      "id": "clothes_textile",
+      "name": "Worn Clothes / Fabric Scraps / Old Textile",
+      "material_keys": ["cotton_textile", "polyester_textile"],
+      "keywords": [
+        "torn jeans", "old towel", "cloth rags", "cloth rag", "old dresses",
+        "old dress", "fabric scraps", "fabric scrap", "old shirts", "old shirt",
+        "old clothes", "worn clothes", "clothes", "textile"
+      ],
+      "category": "recyclable",
+      "special": false,
+      "recycling_potential": "Medium",
+      "reason": "Textiles can be repurposed, downcycled into rags/insulation, or donated if still usable.",
+      "steps": {
+        "prepare": "Wash and dry properly.",
+        "separate": "If wearable, donate to charity. If torn/unusable, bundle separately.",
+        "route": "Place in Dry/Recyclable bin or cloth donation drive."
+      }
+    },
+    {
+      "id": "paper_cup",
+      "name": "Paper Cup / Disposable Coffee Cup",
+      "material_keys": ["pe_coated_paper_cup"],
+      "keywords": [
+        "disposable paper cup", "disposable cups", "disposable cup", "coffee cups",
+        "coffee cup", "tea cups", "tea cup", "paper cups", "paper cup"
+      ],
+      "category": "other",
+      "special": false,
+      "recycling_potential": "Low",
+      "reason": "Most disposable paper cups have an internal waterproof polyethylene plastic lining that standard paper recycling facilities cannot separate easily.",
+      "steps": {
+        "prepare": "Empty remaining liquid completely.",
+        "separate": "Remove plastic lid and straw (if plastic lid is rigid, put lid in Dry/Recyclable bin).",
+        "route": "Place paper cup in Reject bin."
+      }
+    },
+    {
+      "id": "styrofoam_packaging",
+      "name": "Styrofoam / Expanded Polystyrene (EPS)",
+      "material_keys": ["expanded_polystyrene_eps"],
+      "keywords": [
+        "thermocol packaging", "thermocol", "styrofoam cup", "foam packaging",
+        "styrofoam", "eps foam"
+      ],
+      "category": "other",
+      "special": false,
+      "recycling_potential": "Low",
+      "reason": "Thermocol is 98% air and extremely bulky; municipal mechanical recycling is rarely economically viable.",
+      "steps": {
+        "prepare": "Break into manageable pieces without scattering small beads.",
+        "separate": "Keep dry and separated from food waste.",
+        "route": "Place in Reject bin."
+      }
+    },
+    {
+      "id": "snack_wrapper",
+      "name": "Multi-Layer Snack Wrapper (Chips / Biscuit / MLP)",
+      "material_keys": ["multi_layer_laminate_mlp"],
+      "keywords": [
+        "chocolate wrapper", "candy wrapper", "biscuit wrappers", "biscuit wrapper",
+        "biscuit packets", "biscuit packet", "lays packets", "lays packet",
+        "kurkure packets", "kurkure packet", "chips bags", "chips bag",
+        "chips packets", "chips packet", "snack wrappers", "snack wrapper"
+      ],
+      "category": "other",
+      "special": false,
+      "recycling_potential": "Low",
+      "reason": "Multi-Layered Plastics (MLP) bond metallized plastic film and polymer, making mechanical recycling difficult.",
+      "steps": {
+        "prepare": "Empty all crumbs.",
+        "separate": "Collect in dry reject stream.",
+        "route": "Place in Reject bin - routed to cement kilns for energy recovery (RDF)."
+      }
+    },
+    {
+      "id": "plastic_straw",
+      "name": "Plastic Straw / Single-use Cutlery",
+      "material_keys": ["single_use_polypropylene_cutlery"],
+      "keywords": [
+        "single-use straw", "plastic cutlery", "plastic spoons", "plastic spoon",
+        "plastic forks", "plastic fork", "plastic knife", "plastic straws", "plastic straw"
+      ],
+      "category": "other",
+      "special": false,
+      "recycling_potential": "Low",
+      "reason": "Too lightweight and small to be sorted by automated sorting screens at Material Recovery Facilities (MRFs).",
+      "steps": {
+        "prepare": "Rinse off food residue.",
+        "separate": "Avoid using; switch to metal or bamboo alternatives.",
+        "route": "Place in Reject bin."
+      }
+    },
+    {
+      "id": "plastic_carry_bag",
+      "name": "Thin Plastic Carry Bag / Polythene Bag",
+      "material_keys": ["thin_film_polybag"],
+      "keywords": [
+        "poly bags", "poly bag", "plastic carry bags", "plastic carry bag",
+        "polythene bags", "polythene bag", "carry bags", "carry bag",
+        "plastic bags", "plastic bag"
+      ],
+      "category": "other",
+      "special": false,
+      "recycling_potential": "Low",
+      "reason": "Single-use thin plastic bags are restricted in many places. Avoid them.",
+      "steps": {
+        "prepare": "Clean and dry. Avoid taking single-use bags.",
+        "separate": "Group with soft plastics.",
+        "route": "Place in Reject bin."
+      }
+    },
+    {
+      "id": "medicine_strip",
+      "name": "Medicine Blister Pack (Alu-PVC)",
+      "material_keys": ["pharma_pvc_alu_blister"],
+      "keywords": [
+        "medicine packets", "medicine packet", "capsule strips", "capsule strip",
+        "tablet strips", "tablet strip", "medicine strips", "medicine strip",
+        "blister packs", "blister pack"
+      ],
+      "category": "other",
+      "special": false,
+      "recycling_potential": "Low",
+      "reason": "Tightly bonded layers of plastic (PVC) and aluminum foil cannot be separated by standard recyclers.",
+      "steps": {
+        "prepare": "Ensure expired medicines are removed (never flush medicines down drains).",
+        "separate": "Empty blister pack goes to reject waste.",
+        "route": "Place in Reject bin or pharmacy medicine return drive."
+      }
+    },
+    {
+      "id": "e_waste_device",
+      "name": "Electronic Waste (Phone, Charger, Laptop, PCB)",
+      "material_keys": ["consumer_electronics_pcb"],
+      "keywords": [
+        "smartphones", "smartphone", "cell phones", "cell phone", "laptops", "laptop",
+        "charging cables", "charging cable", "chargers", "charger", "power banks", "power bank",
+        "usb cables", "usb cable", "keyboards", "keyboard", "mouse", "circuit boards", "circuit board",
+        "pcb", "earphones", "headphones", "phones", "phone"
+      ],
+      "category": "other",
+      "special": true,
+      "recycling_potential": "High",
+      "reason": "Contains precious metals (gold, copper) along with toxic brominated flame retardants and heavy metals.",
+      "steps": {
+        "prepare": "Back up / wipe data if it is a smart device.",
+        "separate": "Store in a dry box away from rain and moisture.",
+        "route": "Drop off at Hazardous/E-waste drop-off center or authorized take-back kiosk."
+      }
+    },
+    {
+      "id": "light_bulb",
+      "name": "CFL / Tube Light / LED Bulb",
+      "material_keys": ["mercury_cfl_light", "led_electronic_bulb"],
+      "keywords": [
+        "incandescent bulb", "led bulbs", "led bulb", "led lights", "led light",
+        "fluorescent tubes", "fluorescent tube", "fluorescent bulb", "tube lights",
+        "tube light", "tubelight", "cfl bulbs", "cfl bulb", "cfl lights", "cfl light", "cfl"
+      ],
+      "category": "other",
+      "special": true,
+      "recycling_potential": "Medium",
+      "reason": "CFLs and fluorescent tube lights contain toxic mercury vapor that releases if shattered. LED bulbs contain electronic driver circuits that belong in e-waste.",
+      "steps": {
+        "prepare": "Do not break the glass tube or bulb. Wrap in protective cardboard sleeve if possible.",
+        "separate": "Separate strictly from ordinary household waste.",
+        "route": "Drop off at Hazardous/E-waste drop-off center (CFL/tubes as hazardous, LEDs as e-waste)."
+      }
+    },
+    {
+      "id": "spray_can",
+      "name": "Aerosol Spray Can (Deodorant / Paint)",
+      "material_keys": ["pressurized_aerosol_can"],
+      "keywords": [
+        "room freshener can", "bug spray can", "paint spray can", "aerosol spray",
+        "deodorant cans", "deodorant can", "aerosol cans", "aerosol can", "spray cans", "spray can"
+      ],
+      "category": "other",
+      "special": true,
+      "recycling_potential": "Medium",
+      "reason": "Pressurized can that can explode in compactor trucks or trash incinerators if heated or punctured.",
+      "steps": {
+        "prepare": "Do not puncture or burn.",
+        "separate": "Remove plastic nozzle cap.",
+        "route": "Hand over to Hazardous/E-waste drop-off collection."
+      }
+    },
+    {
+      "id": "sanitary_waste",
+      "name": "Sanitary Napkins / Diapers / Medical Bandages",
+      "material_keys": ["biomedical_sanitary_waste"],
+      "keywords": [
+        "used bandage", "medical bandages", "medical bandage", "tampons", "tampon",
+        "sanitary napkins", "sanitary napkin", "sanitary pads", "sanitary pad",
+        "diapers", "diaper"
+      ],
+      "category": "other",
+      "special": true,
+      "recycling_potential": "None",
+      "reason": "Biohazard and non-recyclable; requires high-temperature municipal incineration.",
+      "steps": {
+        "prepare": "Wrap securely in newspaper or disposal pouch marked with a red cross mark.",
+        "separate": "Strictly do NOT mix with Wet bin or Dry/Recyclable bin.",
+        "route": "Hand over as Hazardous/Domestic special waste."
+      }
+    },
+
+    {
+      "id": "generic_organic",
+      "name": "Other Organic Waste / Food Scraps",
+      "material_keys": ["organic_waste", "food_scrap", "biodegradable", "organic"],
+      "keywords": ["organic waste", "food scrap", "food scraps", "biodegradable waste", "kitchen waste"],
+      "category": "organic",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Biodegradable organic matter suitable for composting and anaerobic digestion.",
+      "steps": {
+        "prepare": "Remove plastic packaging or synthetic wraps.",
+        "separate": "Keep separate from dry recyclables.",
+        "route": "Deposit in Wet bin (Green bin stream)."
+      }
+    },
+    {
+      "id": "generic_paper",
+      "name": "Other Paper or Cardboard",
+      "material_keys": ["paper", "cardboard", "paperboard", "fiber"],
+      "keywords": ["paper waste", "cardboard scrap", "waste paper"],
+      "category": "recyclable",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Clean unsoiled paper fiber is pulped into new recycled paper products.",
+      "steps": {
+        "prepare": "Keep completely dry and grease-free.",
+        "separate": "Flatten and bundle.",
+        "route": "Place in Dry/Recyclable bin."
+      }
+    },
+    {
+      "id": "generic_plastic",
+      "name": "Other Plastic Item",
+      "material_keys": ["plastic", "polypropylene", "mixed_plastic", "polymer"],
+      "keywords": ["plastic item", "plastic waste", "rigid plastic"],
+      "category": "other",
+      "special": false,
+      "recycling_potential": "Medium",
+      "reason": "Recyclability depends on polymer code (#1 to #7) and local municipal facilities. Many mixed plastics are non-recyclable.",
+      "steps": {
+        "prepare": "Check the recycling number (1 to 7) and your local rules. Rinse and keep dry.",
+        "separate": "Keep separate from wet food waste.",
+        "route": "If resin number #1 (PET) or #2 (HDPE), place in Dry/Recyclable bin; otherwise place in Reject bin."
+      }
+    },
+    {
+      "id": "generic_metal",
+      "name": "Other Metal Item",
+      "material_keys": ["metal", "scrap_metal", "tin", "steel", "aluminum"],
+      "keywords": ["metal scrap", "scrap metal", "metal piece", "tin piece"],
+      "category": "recyclable",
+      "special": false,
+      "recycling_potential": "High",
+      "reason": "Metals are highly recyclable with significant energy savings.",
+      "steps": {
+        "prepare": "Wipe clean of grease and oils.",
+        "separate": "Keep separate from general waste.",
+        "route": "Place in Dry/Recyclable bin or sell to scrap dealer."
+      }
+    },
+    {
+      "id": "generic_ewaste",
+      "name": "Other Electronic Item (Special Handling)",
+      "material_keys": ["e_waste", "electronics", "circuit", "electronic_waste"],
+      "keywords": ["electronic device", "e waste", "broken electronics", "electronic scrap"],
+      "category": "other",
+      "special": true,
+      "recycling_potential": "High",
+      "reason": "Electronic hardware contains valuable trace metals and toxic components requiring specialized recovery.",
+      "steps": {
+        "prepare": "Store safely in dry conditions.",
+        "separate": "Never mix with ordinary household trash.",
+        "route": "Drop off at authorized Hazardous/E-waste drop-off point."
+      }
+    }
+  ],
+  "default_fallback": {
+    "category": "other",
+    "special": false,
+    "recycling_potential": "None",
+    "reason": "I'm not sure. Please retake the photo or describe the item.",
+    "steps": {
+      "prepare": "Inspect the item closely.",
+      "separate": "Check with local municipal guidelines.",
+      "route": "Retake photo or enter item name in text box."
+    }
+  }
+}

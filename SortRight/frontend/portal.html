@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SortRight - Staff Analytics Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <a href="/portal" class="brand-container">
+      <div class="brand-icon">📊</div>
+      <div>
+        <span class="brand-title">SortRight Portal</span>
+        <span id="userRoleBadge" style="display: block; font-size: 0.72rem; color: var(--accent-cyan); font-weight: 700;">Loading...</span>
+      </div>
+    </a>
+    
+    <div class="nav-links">
+      <span id="userNameDisplay" style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 500;"></span>
+      <button id="btnLogout" class="tab-btn" style="padding: 0.4rem 0.8rem; font-size: 0.82rem; background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3);">
+        Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="app-container" style="max-width: 960px;">
+    
+    <!-- Simulation Banner -->
+    <div style="background-color: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; border-radius: var(--radius-sm); padding: 0.65rem 1rem; color: #fef3c7; font-size: 0.85rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+      <div><strong>⚠️ Simulated demo data. Not real scan data.</strong></div>
+      <div style="font-size: 0.75rem; color: #fde68a;">Area-level aggregates only • No personal data stored</div>
+    </div>
+
+    <!-- Date Range & Export Controls -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
+      <div>
+        <h1 id="portalTitle" style="font-size: 1.5rem; font-weight: 800; color: #fff;">City Analytics & Operations</h1>
+        <p id="portalSubtitle" style="font-size: 0.88rem; color: var(--text-secondary);">Real-time municipal segregation tracking.</p>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; align-items: center;">
+        <select id="periodSelect" class="lang-select" style="padding: 0.5rem 0.75rem;">
+          <option value="30">Last 30 Days</option>
+          <option value="7">Last 7 Days</option>
+          <option value="90">Last 90 Days</option>
+        </select>
+        <button id="btnExportCsv" class="tab-btn" style="padding: 0.5rem 0.85rem; font-size: 0.85rem; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary);">
+          📥 Export CSV
+        </button>
+      </div>
+    </div>
+
+    <!-- VIEW 1: MUNICIPALITY VIEW -->
+    <div id="municipalityView" style="display: none;">
+      
+      <!-- KPI Row -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Simulated Scans</div>
+          <div id="kpiScans" style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-top: 0.25rem;">-</div>
+          <div style="font-size: 0.75rem; color: var(--cat-recyclable); margin-top: 0.25rem;">↑ 18.2% vs prior period</div>
+        </div>
+
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Segregation Accuracy</div>
+          <div id="kpiAccuracy" style="font-size: 1.8rem; font-weight: 800; color: var(--cat-recyclable); margin-top: 0.25rem;">-</div>
+          <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">City Target: 80.0%</div>
+        </div>
+
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Contamination Rate</div>
+          <div id="kpiContamination" style="font-size: 1.8rem; font-weight: 800; color: var(--cat-special); margin-top: 0.25rem;">-</div>
+          <div style="font-size: 0.75rem; color: var(--cat-recyclable); margin-top: 0.25rem;">↓ 3.1% reduction</div>
+        </div>
+
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">E-Waste Safely Routed</div>
+          <div id="kpiEwaste" style="font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin-top: 0.25rem;">-</div>
+          <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">Drop-off collection</div>
+        </div>
+      </div>
+
+      <!-- Charts Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+        
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <h2 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">Waste Mix by Category</h2>
+          <div style="height: 220px; position: relative;">
+            <canvas id="muniWasteMixChart"></canvas>
+          </div>
+        </div>
+
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <h2 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">Contamination by Ward (%)</h2>
+          <div style="height: 220px; position: relative;">
+            <canvas id="muniHotspotsChart"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ward-Wise Table -->
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; overflow-x: auto;">
+        <h2 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem;">Ward-Wise Segregation Performance</h2>
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+              <th style="padding: 0.6rem 0.5rem;">Ward</th>
+              <th style="padding: 0.6rem 0.5rem;">Scans</th>
+              <th style="padding: 0.6rem 0.5rem;">Recyclable %</th>
+              <th style="padding: 0.6rem 0.5rem;">Organic %</th>
+              <th style="padding: 0.6rem 0.5rem;">Contamination %</th>
+              <th style="padding: 0.6rem 0.5rem;">E-Waste (kg)</th>
+              <th style="padding: 0.6rem 0.5rem;">Status</th>
+            </tr>
+          </thead>
+          <tbody id="wardTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Collection Planning Derived Suggestions -->
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <h2 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-cyan);">
+          📋 AI & Rule-Derived Collection Planning Recommendations
+        </h2>
+        <div id="planningList" style="display: flex; flex-direction: column; gap: 0.65rem;"></div>
+      </div>
+
+    </div>
+
+    <!-- VIEW 2: RECYCLER AGGREGATOR VIEW -->
+    <div id="recyclerView" style="display: none;">
+      
+      <!-- Methodology Note -->
+      <div style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: var(--radius-sm); padding: 0.75rem 1rem; font-size: 0.82rem; color: #a5f3fc; margin-bottom: 1.25rem;">
+        ℹ️ <strong>Estimation Methodology:</strong> Quantities are estimated based on simulated citizen scan frequency, item standard tare weights, and historical recovery yield rates.
+      </div>
+
+      <!-- Material Availability Table -->
+      <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; overflow-x: auto;">
+        <h2 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem;">Estimated Material Availability by Stream</h2>
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+              <th style="padding: 0.6rem 0.5rem;">Material Stream</th>
+              <th style="padding: 0.6rem 0.5rem;">Est. Available (Tons)</th>
+              <th style="padding: 0.6rem 0.5rem;">Quality Grade</th>
+              <th style="padding: 0.6rem 0.5rem;">Top Source Wards</th>
+              <th style="padding: 0.6rem 0.5rem;">Price Trend</th>
+            </tr>
+          </thead>
+          <tbody id="materialTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Recycler Charts Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+        
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <h2 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">Key Material Supply Trends (Tons)</h2>
+          <div style="height: 220px; position: relative;">
+            <canvas id="recyclerTrendChart"></canvas>
+          </div>
+        </div>
+
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <h2 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">Optimized Bulk Pickup Windows</h2>
+          <div id="pickupList" style="display: flex; flex-direction: column; gap: 0.6rem;"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>SortRight Staff Portal • Role-Based Analytics • Zero Persistent Image Storage</p>
+  </footer>
+
+  <script src="/js/portal.js"></script>
+</body>
+</html>

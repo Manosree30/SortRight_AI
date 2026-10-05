@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SortRight - About, Privacy & Roadmap</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="/" class="brand-container">
+      <div class="brand-icon">♻️</div>
+      <span class="brand-title">SortRight</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">🔍 Classifier</a>
+      <a href="/about.html" class="nav-link active">ℹ️ About</a>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="app-container" style="max-width: 760px;">
+    
+    <header class="hero-header" style="text-align: left; margin-bottom: 2rem;">
+      <h1 class="hero-title">About SortRight</h1>
+      <p class="hero-subtitle">The Deterministic AI Waste Classification Assistant for Indian Municipalities.</p>
+    </header>
+
+    <!-- Section 1: Core Design Principle -->
+    <section style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem;">
+      <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-cyan);">
+        💡 Core Design Principle
+      </h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.6;">
+        Most waste-sorting apps fail because they ask generative AI to "hallucinate" disposal advice. In reality, municipal recycling rules are strictly deterministic and location-specific.
+      </p>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+        <strong style="color: #fff;">SortRight decouples perception from governance:</strong> The vision/language model only identifies <em>WHAT</em> the item is, its material, and its visible condition. A deterministic rules engine (<code style="color: var(--accent-cyan); background: rgba(0,0,0,0.4); padding: 0.1rem 0.4rem; border-radius: 4px;">rules.json</code>) decides the category, special-handling flags, recycling potential, and step-by-step actions.
+      </p>
+    </section>
+
+    <!-- Section 2: Privacy Guarantee -->
+    <section style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem;">
+      <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--cat-recyclable);">
+        🛡️ Privacy by Design
+      </h2>
+      <ul style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; padding-left: 1.2rem;">
+        <li><strong>Zero Image Storage:</strong> Photos captured via camera or uploaded are compressed purely in-memory (<code style="color: var(--accent-cyan);">io.BytesIO</code>) and sent directly to the model API. Images are never written to disk or saved to any database.</li>
+        <li><strong>Zero Personal Tracking:</strong> No cookies, no user tracking, and scan history is stored solely inside your local browser storage (<code style="color: var(--accent-cyan);">localStorage</code>).</li>
+        <li><strong>Secure Secrets:</strong> API keys are maintained strictly inside <code style="color: var(--accent-cyan);">.env</code> and excluded from version control.</li>
+      </ul>
+    </section>
+
+    <!-- Section 3: Future Roadmap (Excluded from MVP) -->
+    <section style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2rem;">
+      <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: #f59e0b;">
+        🚀 Future Roadmap
+      </h2>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+        The following features are planned for future versions beyond the initial hackathon prototype:
+      </p>
+      
+      <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+        <div style="background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem 1rem;">
+          <div style="font-weight: 700; font-size: 0.95rem; color: #fff;">1. Multi-Item Scene Segmentation Overlay</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Bounding boxes and category masks for scanning multiple waste items on a table simultaneously.</div>
+        </div>
+
+        <div style="background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem 1rem;">
+          <div style="font-weight: 700; font-size: 0.95rem; color: #fff;">2. Barcode & Resin Identification Code (RIC) Scanning</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Direct barcode lookup with brand packaging material databases (#1 PET, #2 HDPE, #4 LDPE, #5 PP).</div>
+        </div>
+
+        <div style="background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem 1rem;">
+          <div style="font-weight: 700; font-size: 0.95rem; color: #fff;">3. Municipal Drop-Off Facility Map & GPS Navigation</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Interactive Leaflet map showing nearest authorized E-Waste drop-off points and dry waste collection centers (MRFs).</div>
+        </div>
+
+        <div style="background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem 1rem;">
+          <div style="font-weight: 700; font-size: 0.95rem; color: #fff;">4. Continuous Active Learning & Municipal Cloud Integration</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Multi-city rules synchronization, real IoT bin aggregation, and sanitation fleet route optimization.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>
+      SortRight • Built for Hackathon Demo • Sample Rules for Coimbatore
+      <span style="margin: 0 0.5rem; opacity: 0.4;">|</span>
+      <a href="/portal/login" style="color: var(--text-muted); text-decoration: none; font-size: 0.78rem;">🔒 Staff Login</a>
+    </p>
+  </footer>
+
+</body>
+</html>
