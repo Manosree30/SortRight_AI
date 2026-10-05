@@ -1,4 +1,6 @@
 # ♻️ SortRight - AI Waste Classification Assistant
+# website link
+https://sortright-ai.onrender.com/
 
 A hackathon MVP for intelligent waste segregation that **decouples AI perception from deterministic municipal rules**.
 
@@ -70,7 +72,7 @@ python -m uvicorn backend.app:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 Open your browser at:
-👉 **[http://localhost:8000](http://localhost:8000)**
+👉 **[http://localhost:8000](http://localhost:8000)*
 
 ---
 
