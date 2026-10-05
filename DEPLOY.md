@@ -52,7 +52,7 @@ In the **Environment Variables** section of your Render Web Service dashboard, a
 - `GROQ_API_KEY`
   - *Purpose*: Your Groq Cloud API key for AI vision perception and text attribute extraction.
 - `SESSION_SECRET`
-  - *Purpose*: Long random cryptographic string used for server-side session integrity (e.g., generated with `openssl rand -hex 32` or `python -c "import secrets; print(secrets.token_hex(32))"`). The service will fail fast with a clear error if this is missing.
+  - *Purpose*: Long random cryptographic string used for server-side session integrity (e.g., generated with `python -c "import secrets; print(secrets.token_hex(32))"`). The service will fail fast with a clear error if this is missing.
 
 ### 2. AI Model Selection (Optional - defaults are built-in)
 - `GROQ_VISION_MODEL`
@@ -69,15 +69,15 @@ In the **Environment Variables** section of your Render Web Service dashboard, a
 
 ### 4. Staff Portal Accounts (Bcrypt Password Hashes)
 - `MUNICIPALITY_EMAIL`
-  - *Default*: `officer@coimbatore.gov.in`
+  - *Default*: `municipality@demo.example`
 - `MUNICIPALITY_NAME`
-  - *Default*: `Coimbatore Sanitation Admin`
+  - *Default*: `Demo Municipality User`
 - `MUNICIPALITY_PASSWORD_HASH`
-  - *Purpose*: Bcrypt hash of the municipality officer password (e.g., generated using bcrypt).
+  - *Purpose*: Bcrypt hash of the municipality officer password (generated with helper script `hash_password.py`).
 - `RECYCLER_EMAIL`
-  - *Default*: `manager@cleanreclaim.in`
+  - *Default*: `recycler@demo.example`
 - `RECYCLER_NAME`
-  - *Default*: `CleanReclaim Materials`
+  - *Default*: `Demo Recycler User`
 - `RECYCLER_PASSWORD_HASH`
   - *Purpose*: Bcrypt hash of the recycler partner password.
 

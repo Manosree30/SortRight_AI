@@ -37,9 +37,9 @@ def get_demo_users() -> Dict[str, Dict[str, Any]]:
     """
     users = {}
     
-    muni_email = os.getenv("MUNICIPALITY_EMAIL", "officer@coimbatore.gov.in").strip().lower()
+    muni_email = os.getenv("MUNICIPALITY_EMAIL", "municipality@demo.example").strip().lower()
     muni_hash = os.getenv("MUNICIPALITY_PASSWORD_HASH", "").strip()
-    muni_name = os.getenv("MUNICIPALITY_NAME", "Coimbatore Sanitation Admin").strip()
+    muni_name = os.getenv("MUNICIPALITY_NAME", "Demo Municipality User").strip()
     if muni_email and muni_hash:
         users[muni_email] = {
             "email": muni_email,
@@ -48,9 +48,9 @@ def get_demo_users() -> Dict[str, Dict[str, Any]]:
             "password_hash": muni_hash
         }
 
-    recy_email = os.getenv("RECYCLER_EMAIL", "manager@cleanreclaim.in").strip().lower()
+    recy_email = os.getenv("RECYCLER_EMAIL", "recycler@demo.example").strip().lower()
     recy_hash = os.getenv("RECYCLER_PASSWORD_HASH", "").strip()
-    recy_name = os.getenv("RECYCLER_NAME", "CleanReclaim Materials").strip()
+    recy_name = os.getenv("RECYCLER_NAME", "Demo Recycler User").strip()
     if recy_email and recy_hash:
         users[recy_email] = {
             "email": recy_email,
@@ -82,13 +82,13 @@ def get_demo_credentials_for_client() -> Optional[Dict[str, Any]]:
         "accounts": [
             {
                 "role_label": "Municipality Admin",
-                "email": os.getenv("MUNICIPALITY_EMAIL", "officer@coimbatore.gov.in").strip(),
-                "password": os.getenv("DEMO_MUNICIPALITY_PASSWORD", "Admin@Coimbatore2026").strip()
+                "email": os.getenv("MUNICIPALITY_EMAIL", "municipality@demo.example").strip(),
+                "password": os.getenv("DEMO_MUNICIPALITY_PASSWORD", "DemoMuni2026!").strip()
             },
             {
                 "role_label": "Recycler Partner",
-                "email": os.getenv("RECYCLER_EMAIL", "manager@cleanreclaim.in").strip(),
-                "password": os.getenv("DEMO_RECYCLER_PASSWORD", "Recycle@2026").strip()
+                "email": os.getenv("RECYCLER_EMAIL", "recycler@demo.example").strip(),
+                "password": os.getenv("DEMO_RECYCLER_PASSWORD", "DemoRecycle2026!").strip()
             }
         ]
     }
